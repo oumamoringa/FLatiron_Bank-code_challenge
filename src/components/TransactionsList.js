@@ -9,6 +9,7 @@ function TransactionsList({ transactions, handleDeleteTransaction }) {
 				method: "DELETE",
 			});
 			handleDeleteTransaction(transId);
+      console.log(res)
 		} catch (error) {
 			console.log(error);
 		}
@@ -39,7 +40,6 @@ function TransactionsList({ transactions, handleDeleteTransaction }) {
 					/>
 
 				))}
-        {deleteTransaction}
 
       </tbody>
     </table>
