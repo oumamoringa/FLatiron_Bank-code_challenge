@@ -31,14 +31,16 @@ function TransactionsList({ transactions, handleDeleteTransaction }) {
           </th>
         </tr>
         {/* render a list of <Transaction> components here */}
-
-        {transactions.map((transaction, idx) => (
+          {transactions.map((transaction, index) => (
 					<Transaction
-						key={transaction.id}
+						key={index}
 						transaction={transaction}
 						deleteTransaction={deleteTransaction}
 					/>
+
 				))}
+        {deleteTransaction}
+
       </tbody>
     </table>
   );
