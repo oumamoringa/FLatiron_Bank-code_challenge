@@ -6,10 +6,10 @@ function TransactionsList({ transactions, handleDeleteTransaction }) {
 		console.log(transId);
 		try {
 			const res = await fetch("http://localhost:8001/transactions/" + transId, {
-				method: "DELETE",
+				method: "ID",
 			});
 			handleDeleteTransaction(transId);
-      console.log(res)
+      console.log(res);
 		} catch (error) {
 			console.log(error);
 		}
@@ -31,6 +31,8 @@ function TransactionsList({ transactions, handleDeleteTransaction }) {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
+
+{/*Area cauusing the error*/}
         {/* render a list of <Transaction> components here */}
           {transactions.map((transaction, index) => (
 					<Transaction
