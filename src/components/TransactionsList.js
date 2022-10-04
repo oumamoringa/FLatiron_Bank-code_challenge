@@ -1,19 +1,8 @@
+
 import React from "react";
 import Transaction from "./Transaction";
 
-function TransactionsList({ transactions, handleDeleteTransaction }) {
-  const deleteTransaction = async (transId) => {
-		console.log(transId);
-		try {
-			const res = await fetch("http://localhost:8001/transactions/" + transId, {
-				method: "ID",
-			});
-			handleDeleteTransaction(transId);
-      console.log(res);
-		} catch (error) {
-			console.log(error);
-		}
-	};
+function TransactionsList({transactions}) {
   return (
     <table className="ui celled striped padded table">
       <tbody>
@@ -31,18 +20,17 @@ function TransactionsList({ transactions, handleDeleteTransaction }) {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
-
-{/*Area cauusing the error*/}
         {/* render a list of <Transaction> components here */}
-          {transactions.map((transaction, index) => (
-					<Transaction
-						key={index}
-						transaction={transaction}
-						deleteTransaction={deleteTransaction}
-					/>
-
-				))}
-
+        {transactions.map(transaction => {
+          return <Transaction
+          date={transaction.date}
+          description={transaction.description}
+          category={transaction.category}
+          amount={transaction.amount}
+          key={transaction.id}
+          />
+        })
+        }
       </tbody>
     </table>
   );
